@@ -1,0 +1,286 @@
+/* 
+	Custom styles for the Dashboard
+*/
+
+/*
+	General Styles
+*/
+* {
+	color: #333;
+	text-shadow: none;
+}
+
+body {
+	background-color: #eee;
+	font-size: 16px;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
+	margin: 0;
+}
+
+.btn-default:hover {
+	background-image: none;
+}
+.btn.caret {
+	color: #333;
+}
+.btn-small {
+	padding: 0 4px;
+}
+.btn-dark {
+	background-color: #333 !important;
+}
+	.btn-dark, .btn-dark * {		
+		color: #fff !important;
+	}
+.btn-dark:hover, .btn-dark:hover * {
+	background-color: #555 !important;	
+}
+
+
+
+
+/*
+	RESPONSIVE STYLES
+*/
+
+@media screen and ( min-width:50px ) {
+
+	.container-fluid {
+		position: relative;
+	}
+	
+	.row {
+		padding: 0;
+	}
+
+	.dashboard-sidebar-bg {
+		display: none;
+		background-color: #333;
+		position: absolute;
+		top: 0; left: 0;
+		height: 100%;		
+	}
+
+	.dashboard-sidebar {		
+		background-color: #333;	
+		padding: 0;
+	}
+
+	.dashboard-sidebar * {
+		/* default rules inherited */
+		color: #eee;
+		text-align: center;
+		margin: 0;
+	}
+		
+
+	/* dashboard typography */
+
+	.dashboard-text-block {
+		background-color: none;		
+		margin: auto;
+		text-align: center;
+		padding: 20px;
+		font-family: 'Open Sans', inherit;
+	}
+		.dashboard-text-block * {		
+			font-weight: 100;
+		}
+		.dashboard-welcome {
+			padding: 20px 0;
+			width: 80%;
+			margin: auto;
+			border-bottom: 1px solid gray;
+		}
+			.dashboard-text-sm {
+				font-size: 14px;
+			}
+			.dashboard-text-default {
+				font-size: 16px;
+			}
+			.dashboard-text-md {
+				font-size: 20px;
+			}
+			.dashboard-text-lg {
+				font-size: 24px;
+			}
+			.dashboard-text-xl {
+				font-size: 30px;
+			}
+			.dashboard-text-block strong {
+				font-weight: 600;
+			}
+
+
+	.content {
+		padding: 50px 0;		
+		text-align: center;
+	}
+	.row:nth-child(odd) .content {		
+		background-color: #eee;
+	}
+	.row:nth-child(even) .content {		
+		background-color: #fff;
+	}
+		.content-title {
+			text-align: center;
+			width: 90%;
+			margin: auto;
+			padding: 0 0 20px 0;
+		}
+		.content-title h2 {
+			margin: 20px 0 10px 0;
+		}
+		.chart {
+			width: 90%;
+			height: 350px;
+			margin: 0 auto;
+			-webkit-box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+			box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+			border: 1px solid #eee;
+		}
+			.realtime-btn {
+				color: #777;
+			}
+			input[type="checkbox"]:checked + .realtime-btn {
+				color: #fff;
+			}
+
+		.history-chart-buttons-block {
+			text-align: center;
+			padding: 20px 0 0 0;
+		}
+			.history-chart-buttons {
+				display: block;
+			}				
+				.history-chart-buttons input[type="radio"]:checked + .btn {
+					background: #333 !important;
+					color: #fff ;
+					-webkit-text-shadow: none;
+					-moz-text-shadow: none;
+					-ms-text-shadow: none;
+					-o-text-shadow: none;
+					text-shadow: none;
+				}
+					.history-chart-buttons input[type="radio"]:checked + .btn .glyphicon {						
+						color: #ddd ;
+					}
+		.rank-list {
+			width: 90%;
+			margin: auto;
+			text-align: left;
+		}
+			.rank-item {
+				background-color: #fff;
+				-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+				box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+				padding: 10px 0;
+			}
+				.rank-item-rank {
+					font-weight: 900;
+					text-align: center;
+					padding: 5px 0;
+				}
+				.rank-item-info {
+					padding: 10px 0;
+				}
+					.rank-item-subinfo {
+						padding: 10px 0;
+						border-top: 1px solid silver;
+					}
+		.appliances-table {
+			padding: 10px 0;
+		}			
+			.table#appliances tr td:nth-child(2) {
+				width: 1px;			
+				background-color: #000;
+			}
+			.table#appliances tr:nth-child(even) > td {
+				border-top: none;
+			}
+		.table#appliances td {
+			padding: 0;
+		}
+			.table#appliances:nth-child(odd) td > div{
+				padding: 10px;
+			}
+			.table#appliances td .panel-collapse {
+				padding: 0 !important;
+			}
+				.table#appliances td .panel-collapse div {
+					padding: 10px;
+				}
+		.recommendations {
+			width: 90%;
+			margin: auto;
+		}
+			.recommendations .panel {				
+				
+			}
+			
+
+}
+
+
+@media screen and ( min-width:768px ) {
+
+	.row {
+		
+	}
+
+	.dashboard-sidebar-bg {		
+		display: block;
+	}
+
+	.dashboard-sidebar.itemsList {
+		display: block;
+		height: auto !important;
+	}
+
+	.dashboard-sidebar * {
+		text-align: right;
+	}
+	
+	.content {
+		padding: 40px 10px 50px 10px;
+	}
+	.appliance-ranking .content {
+		float: right;
+	}
+	.appliance-ranking .dashboard-sidebar {
+		float: left;
+	}
+		.chart {
+			width: 100%;			
+		}
+			#totalRunning, #totalConsumptionToday {
+				font-size: 60px;
+				font-weight: 500;
+			}
+			.history-chart-buttons-block {
+				text-align: right;
+			}
+				.history-chart-buttons {			
+					display: inline-block;
+				}
+					.history-chart-buttons .btn {
+						
+					}
+					.history-chart-buttons input[type="radio"]:checked + .btn {
+						
+					}
+	.appliances-table {
+		
+	}
+		.show-appliances-button {			
+			display: none;
+		}
+
+
+		
+}
+
+
+

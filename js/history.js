@@ -9,7 +9,6 @@ $(function () {
         // update colors
         series.data.forEach(function (data, i) {
             var RG = Math.floor(230*(1-(data.y/series.dataMax)));
-            console.log(typeof data.update ); 
             data.update({
                 color : 'rgb('+RG+','+RG+',230)'
             })

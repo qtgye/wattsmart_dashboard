@@ -28,11 +28,12 @@ $(function() {
                         time = (new Date()).getTime(),
                         i;
 
-                    for (i = -19; i <= 0; i += 5) {
+                    for (i = -39; i <= 0; i += 10) {
+                        var y = (i != 0 ? null : Math.random());
                         data.push({
                             x: time + i * 1000,
-                            y: (i != 0 ? null : Math.random())
-                        });
+                            y: y
+                        });                        
                     }
                     return data;
                 }());
@@ -54,9 +55,9 @@ $(function() {
                         function addPoint(){
                             series.forEach(function (s,i) {
                               var x = (new Date()).getTime(), // current time
-                                y = Math.random()*i+1;
+                                y = s.data[s.data.length-1].y + (Math.random()*(8/24/60/6/appliances.items.length));
 
-                              s.addPoint([x,(y*count)+s.data[s.data.length-1].y],true,true);
+                                s.addPoint([x,y],true,true);
                               
                             });
                         };
@@ -68,7 +69,7 @@ $(function() {
                         setInterval(function () {                            
                             addPoint();
                             count++;
-                        }, 5000);
+                        }, 10000);
                     }
                 }
             },
@@ -103,11 +104,11 @@ $(function() {
             series: (function () {
                 var series = [];
 
-                appliances.items.forEach(function (item,i) {
+                appliances.items.forEach(function (item,i) {                    
                     series.push({
                         name : item.name,
                         data: dataSeries
-                    })
+                    });
                 });
                 return series;
             })()

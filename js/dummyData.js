@@ -11,22 +11,56 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
         current : [], // set of dummy series ( year | month | year )
         months : [],
         years : [],
+        dataMatrix : {},
         data : [],
-        getByMonth : function (month,year) {        
-            var data = [];
-            this.data.forEach(function (d,i) {
-                if ( d.month === month && d.year === year )
-                {
-                    // console.log(d.consumption);
-                    if (data[d.day])
+        getByYear : function (year) {        
+            var historyData = this,
+                data = [];
+
+            if ( !historyData.dataMatrix[year] )
+            {
+                return null
+            }
+
+            for ( month in historyData.dataMatrix[year] )
+            {
+                data[month] = (function () {
+                    var consumption = 0;
+                    for ( day in historyData.dataMatrix[year][month] )
                     {
-                        data[d.day] += d.consumption;
+                        for ( hour in historyData.dataMatrix[year][month][day] )
+                        {
+                            consumption += historyData.data[historyData.dataMatrix[year][month][day][hour].dataIndex].consumption;
+                        }
                     }
-                    else{
-                        data[d.day] = d.consumption;
+                    return consumption;
+                })();
+            }
+
+            return data.length > 0 ? {
+                year : year,
+                data : data
+            } : null;
+        },
+        getByMonth : function (month,year) {        
+            var historyData = this,
+                data = [];
+            if ( !historyData.dataMatrix[year][month] )
+            {
+                return null
+            }
+
+            for ( day in historyData.dataMatrix[year][month] )
+            {
+                data[day] = (function () {
+                    var consumption = 0;
+                    for ( hour in historyData.dataMatrix[year][month][day] )
+                    {
+                        consumption += historyData.data[historyData.dataMatrix[year][month][day][hour].dataIndex].consumption;
                     }
-                }
-            });
+                    return consumption;
+                })();
+            }
             return data.length > 0 ? {
                 year : year,
                 month : months[month],
@@ -34,20 +68,18 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             } : null;
         },
         getByDate : function (day,month,year) {        
-            var data = [];
-            this.data.forEach(function (d,i) {
-                if ( d.day === day && d.month === month && d.year === year )
-                {
-                    // console.log(d.consumption);
-                    if (data[d.hour])
-                    {
-                        data[d.hour] += d.consumption;
-                    }
-                    else{
-                        data[d.hour] = d.consumption;
-                    }
-                }
-            });
+            var historyData = this,
+                data = [];
+
+            if ( !historyData.dataMatrix[year][month][day] )
+            {
+                return null
+            }
+
+            for ( hour in historyData.dataMatrix[year][month][day] )
+            {
+                data[hour] = historyData.data[historyData.dataMatrix[year][month][day][hour].dataIndex].consumption;
+            }
             return data.length > 0 ? {
                 year : year,
                 month : months[month],
@@ -67,16 +99,36 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 year : timestamp.getFullYear(),
                 month : timestamp.getMonth(),
                 day : timestamp.getDate(),
-                hour : timestamp.getHours(),
-                consumption : i < 5 ? Math.random()*3 : Math.random()*7
+                hour : timestamp.getHours()                
             };
+        obj.consumption = obj.hour < 5 || obj.hour > 20 ? Math.random()*(5/24) : Math.random()*(8/24)+(5/24)
+        
+        if ( !historyData.dataMatrix[obj.year] )
+        {
+            historyData.dataMatrix[obj.year] = {}
+        }
+        if ( !historyData.dataMatrix[obj.year][obj.month] )
+        {
+            historyData.dataMatrix[obj.year][obj.month] = {}
+        }
+        if ( !historyData.dataMatrix[obj.year][obj.month][obj.day] )
+        {
+            historyData.dataMatrix[obj.year][obj.month][obj.day] = {}
+        }
+        if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] )
+        {
+            historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {dataIndex:historyData.data.length}
+        }
+
         historyData.data.push(obj);
+
     };
 })();
 
-console.log(historyData.getByMonth(10,2013));
-
-
+// console.log(historyData.getByYear(2013).data);
+// console.log(historyData.getByMonth(3,2015));
+// console.log(historyData.getByDate(30,3,2014));
+// console.log(historyData.dataMatrix);
 
 /*
     SETUP DATA FOR CURRENT 
@@ -89,25 +141,15 @@ console.log(historyData.getByMonth(10,2013));
 
     // setup data for today
     seriesData.push({                
-        data : (function () {
-                var arr = [],
-                    maxKwh = 10, // maximum consumption today
-                    thisHour = today.getHours(),
-                    thisMinute = today.getMinutes()
-                    multiplier = 1/24;
-
-                for ( var i = 1; i < 24 ; i++ ) {
-                    var time = i === 12 ? 12 : ( i < 12 ? i : i-12 ),
-                        suffix = i < 12 ? ' am' :  'pm',
-                        xVal = time + suffix,
-                        consumed = i < 5 ? (maxKwh/24)*0.2 : Math.random() * maxKwh * multiplier;
-                     arr.push([
-                            xVal,
-                            i < thisHour ? consumed : ( i == thisHour ? consumed*(thisMinute/60) : 0 )
-                         ]);
-                     }            
-                return arr;
-            })(),
+        data : historyData.getByDate(today.getDate(),today.getMonth(),today.getFullYear()).data.map(function (data,i) {
+            var time = i === 12 ? 12 : ( i < 12 ? i : i-12 ),
+                suffix = i < 12 ? ' am' :  'pm',
+                xVal = time + suffix;            
+            return [
+                    xVal,
+                    data
+                ]
+        }),
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
         },
@@ -118,21 +160,33 @@ console.log(historyData.getByMonth(10,2013));
     seriesData.push({
        // data for this month
        data : (function () {
-                var arr = [],
-                    dateToday = today.getDate(),
-                    lastDate = new Date(today.getFullYear(),today.getMonth()+1,0).getDate(),
-                    totalthisMonth = seriesData[0].data.reduce(function (s,x) {
-                                    return s + x; 
-                                });
+           var arr = [];
+            historyData.getByMonth(today.getMonth(),today.getFullYear()).data.forEach(function (data,i) {
+                arr.push([
+                        (i).toString(),
+                        data
+                    ]) ;
+            });
+            return arr;
+       })(),
+       // data : (function () {
+       //          var arr = [],
+       //              dateToday = today.getDate(),
+       //              lastDate = new Date(today.getFullYear(),today.getMonth()+1,0).getDate(),
+       //              totalthisMonth = seriesData[0].data.reduce(function (s,x) {
+       //                              return s + x; 
+       //                          });
 
-                for ( var i = 0; i < lastDate ; i++ ) {
-                     arr.push([
-                            (i+1).toString(),
-                            i < dateToday ? (Math.random() * 4) + 3 : ( i == dateToday -1 ? totalToday : 0 )                                
-                         ]);
-                     }            
-                return arr;
-            })(),
+       //          for ( var i = 0; i < lastDate ; i++ ) {
+       //               arr.push([
+       //                      (i+1).toString(),
+       //                      i < dateToday ? (Math.random() * 4) + 3 : ( i == dateToday -1 ? totalToday : 0 )                                
+       //                   ]);
+       //               }
+
+
+       //          return arr;
+       //      })(),
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[new Date().getMonth()]+' '+point.name;
         },
@@ -143,30 +197,42 @@ console.log(historyData.getByMonth(10,2013));
     seriesData.push({
         // data for this year
         data : (function () {
-                var arr = [],
-                    maxPerMonth = 200,
-                    minPerMonth = 100,
-                    thisMonth = today.getMonth(),
-                    totalThisMonth = 0;
+            var arr = [];
+            historyData.getByYear(today.getFullYear()).data.forEach(function (data,i) {
+                arr.push([
+                        months[i],
+                        data
+                    ]) ;
+            });
+        })(),
 
-                    seriesData[1].data.forEach(function (s) { 
-                        totalThisMonth += s[1];
-                    });
+        // (function () {
+        //         var arr = [],
+        //             maxPerMonth = 200,
+        //             minPerMonth = 100,
+        //             thisMonth = today.getMonth(),
+        //             totalThisMonth = 0;
 
-                for ( var i = 0; i < months.length ; i++ ) {
-                     arr.push([
-                            months[i],
-                            i < thisMonth ? Math.random() * (maxPerMonth-minPerMonth+1)+minPerMonth : ( i == thisMonth ? totalThisMonth : 0 )
-                         ]);
-                     }            
-                return arr;
-            })(),
+        //             seriesData[1].data.forEach(function (s) { 
+        //                 totalThisMonth += s[1];
+        //             });
+
+        //         for ( var i = 0; i < months.length ; i++ ) {
+        //              arr.push([
+        //                     months[i],
+        //                     i < thisMonth ? Math.random() * (maxPerMonth-minPerMonth+1)+minPerMonth : ( i == thisMonth ? totalThisMonth : 0 )
+        //                  ]);
+        //              }            
+        //         return arr;
+        //     })(),
         pointFormatter : function (point) {
             console.log(Date);
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name+' '+new Date().getFullYear();
         },
         chartTitle : 'Your Energy Consumption for this Year'
     });
+
+    console.log(seriesData[1]);
 
 })();
 

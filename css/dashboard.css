@@ -83,7 +83,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 		margin: auto;
 		text-align: center;
 		padding: 20px;
-		font-family: 'Open Sans', inherit;
+		font-family: 'Open Sans', sans-serif;
 	}
 		.dashboard-text-block * {		
 			font-weight: 100;

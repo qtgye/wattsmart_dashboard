@@ -5,43 +5,76 @@
 /*
     SET UP HISTORY DATA
 */
-var historyData = {
-    start : new Date(Date.parse('2013 Nov 12')),
-    current : [], // set of dummy series ( year | month | year )
-    previous : [],
-    data : [],
-    getByMonth : function (month,year) {        
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    }
+var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],            
+    historyData = {
+        start : new Date(Date.parse('2013 Nov 12')),
+        current : [], // set of dummy series ( year | month | year )
+        months : [],
+        years : [],
+        data : [],
+        getByMonth : function (month,year) {        
+            var data = [];
+            this.data.forEach(function (d,i) {
+                if ( d.month === month && d.year === year )
+                {
+                    // console.log(d.consumption);
+                    if (data[d.day])
+                    {
+                        data[d.day] += d.consumption;
+                    }
+                    else{
+                        data[d.day] = d.consumption;
+                    }
+                }
+            });
+            return data.length > 0 ? {
+                year : year,
+                month : months[month],
+                data : data
+            } : null;
+        },
+        getByDate : function (day,month,year) {        
+            var data = [];
+            this.data.forEach(function (d,i) {
+                if ( d.day === day && d.month === month && d.year === year )
+                {
+                    // console.log(d.consumption);
+                    if (data[d.hour])
+                    {
+                        data[d.hour] += d.consumption;
+                    }
+                    else{
+                        data[d.hour] = d.consumption;
+                    }
+                }
+            });
+            return data.length > 0 ? {
+                year : year,
+                month : months[month],
+                day : day,
+                data : data
+            } : null;
+        }
 };
 
-
-// populate historyData
+// populate historyData.data
 ;(function(){
-
-    var now = Date.now(),
-        today = new Date(now),
-        day = 86400000;
-
-    for (var i = Date.parse(historyData.start); i <= now; i += 86400000) {
+    for (var i = Date.parse(historyData.start); i <= Date.now(); i += 3600000) {
         var timestamp = new Date(i),
             obj = {
                 unix : i,
+                timestamp : timestamp,
                 year : timestamp.getFullYear(),
                 month : timestamp.getMonth(),
-                date : timestamp.getDate(),
+                day : timestamp.getDate(),
                 hour : timestamp.getHours(),
                 consumption : i < 5 ? Math.random()*3 : Math.random()*7
             };
-
         historyData.data.push(obj);
     };
-
-
 })();
 
-console.log(historyData.data);
-
+console.log(historyData.getByMonth(10,2013));
 
 
 

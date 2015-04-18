@@ -8,8 +8,42 @@
 var historyData = {
     start : new Date(Date.parse('2013 Nov 12')),
     current : [], // set of dummy series ( year | month | year )
-    previous : []
+    previous : [],
+    data : [],
+    getByMonth : function (month,year) {        
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    }
 };
+
+
+// populate historyData
+;(function(){
+
+    var now = Date.now(),
+        today = new Date(now),
+        day = 86400000;
+
+    for (var i = Date.parse(historyData.start); i <= now; i += 86400000) {
+        var timestamp = new Date(i),
+            obj = {
+                unix : i,
+                year : timestamp.getFullYear(),
+                month : timestamp.getMonth(),
+                date : timestamp.getDate(),
+                hour : timestamp.getHours(),
+                consumption : i < 5 ? Math.random()*3 : Math.random()*7
+            };
+
+        historyData.data.push(obj);
+    };
+
+
+})();
+
+console.log(historyData.data);
+
+
+
 
 /*
     SETUP DATA FOR CURRENT 

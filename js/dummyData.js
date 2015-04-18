@@ -6,8 +6,9 @@
     SET UP HISTORY DATA
 */
 var historyData = {
+    start = new Date(Date.parse('2013 Nov 12')),
     current : [], // set of dummy series ( year | month | year )
-    previous : {}
+    previous : []
 };
 
 /*
@@ -104,7 +105,7 @@ var historyData = {
 
 
 /*
-    SETUP DATA FOR HISTORY 
+    SETUP DATA FOR PREVIOUS 
     encapsulated within IIFE to prevent global conflict and mess
 */
 ;(function () {

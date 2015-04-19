@@ -116,20 +116,25 @@ $(function () {
 
             /* callback */
 
-            var chart = this;
+            var chart = this,
+                yearSelect = $('#yearSelected');
 
             // initialise datepickers
-            $('#dateSelected').datepicker();
+            $('#dateSelected').datepicker({
+                onRender: function(date) {
+                    // console.log(date.valueOf());
+                    return date.valueOf() > Date.now() || date.valueOf() < historyData.start.valueOf() ? 'disabled' : '';
+                  }
+            });
             $('#monthSelected').datepicker({
-                format : 'mm-yyyy',
+                format : 'mm/yyyy',
                 viewMode:'months',
                 minViewMode : 'months'                
             });
-            // $('#yearSelected').datepicker({
-            //     format : 'yyyy',
-            //     viewMode:2,
-            //     minViewMode : 2                
-            // });
+            for ( var y = historyData.start.getFullYear(); y <= new Date(Date.now()).getFullYear(); y++  )
+            {
+                yearSelect.append('<option value="'+y+'">'+y+'</option>')
+            }
 
 
             // button click handler for changing series

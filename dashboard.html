@@ -285,56 +285,54 @@
 					<div class="modal-body">
 
 						<div class="panel-group" id="selectPeriodAccordion">
-							<div class="panel panel-default">
+							<label class="panel panel-default" for="dateRadio">
+								<input type="radio" class="hide" name="historySelect" id="dateRadio" checked>
 								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodDate">
 									Select Date
 								</div>
 								<div class="panel-collapse collapse in" id="selectPeriodDate">
 									<div class="panel-body historyPeriodSelect">
-										<div class="form-inline">
-											<div class="input-group">
-												<label class="input-group-addon" for="dateSelected">
-													<!-- <span class="btn btn-default"> -->
-														<span class="glyphicon glyphicon-calendar"></span>
-													<!-- </span>												 -->
-												</label>
-												<input type="text" id="dateSelected"></input>
+										<div class="input-group">													
+											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
+											<div class="input-group-addon">
+												<button type="submit" class="btn btn-small btn-primary">Go</button>	
 											</div>
-										</div>			
-										<span class="btn btn-primary">Go</span>				
+										</div>																					
 									</div>
 								</div>								
-							</div>
-							<div class="panel panel-default">
+							</label>
+							<label class="panel panel-default" for="monthRadio">
+								<input type="radio" class="hide" name="historySelect" id="monthRadio">
 								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodMonth">
-									Select Month
+									Select Date
 								</div>
 								<div class="panel-collapse collapse" id="selectPeriodMonth">
 									<div class="panel-body historyPeriodSelect">
-										<div class="form-inline">
-											<div class="input-group">
-												<label class="input-group-addon" for="monthSelected">
-													<!-- <span class="btn btn-default"> -->
-														<span class="glyphicon glyphicon-calendar"></span>
-													<!-- </span>												 -->
-												</label>
-												<input type="text" id="monthSelected"></input>
+										<div class="input-group">													
+											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
+											<div class="input-group-addon">
+												<button type="submit" class="btn btn-small btn-primary">Go</button>	
 											</div>
-										</div>			
-										<span class="btn btn-primary">Go</span>	
+										</div>																					
 									</div>
 								</div>								
-							</div>
-							<div class="panel panel-default">
+							</label>
+							<label class="panel panel-default" for="yearRadio">
+								<input type="radio" class="hide" name="historySelect" id="yearRadio">
 								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodYear">
-									Select Year
+									Select Date
 								</div>
 								<div class="panel-collapse collapse" id="selectPeriodYear">
 									<div class="panel-body historyPeriodSelect">
-										<select name="" id="yearSelected" ></select>
+										<div class="input-group">													
+											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
+											<div class="input-group-addon">
+												<button type="submit" class="btn btn-small btn-primary">Go</button>	
+											</div>
+										</div>																					
 									</div>
 								</div>								
-							</div>
+							</label>
 
 						</div>
 						<!-- end #selectPeriodAccordion -->

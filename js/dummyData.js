@@ -64,7 +64,11 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             return data.length > 0 ? {
                 year : year,
                 month : months[month],
-                data : data
+                data : data,
+                pointFormatter : function (point) {
+                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[new Date().getMonth()]+' '+point.name;
+                },
+                chartTitle : 'Your Energy Consumption for '+months[month]+', '+year
             } : null;
         },
         getByDate : function (day,month,year) {        
@@ -84,7 +88,11 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 year : year,
                 month : months[month],
                 day : day,
-                data : data
+                data : data,
+                pointFormatter : function (point) {
+                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
+                },
+                chartTitle : 'Your Energy Consumption for '+months[month]+' '+day+', '+year
             } : null;
         }
 };
@@ -169,24 +177,6 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             });
             return arr;
        })(),
-       // data : (function () {
-       //          var arr = [],
-       //              dateToday = today.getDate(),
-       //              lastDate = new Date(today.getFullYear(),today.getMonth()+1,0).getDate(),
-       //              totalthisMonth = seriesData[0].data.reduce(function (s,x) {
-       //                              return s + x; 
-       //                          });
-
-       //          for ( var i = 0; i < lastDate ; i++ ) {
-       //               arr.push([
-       //                      (i+1).toString(),
-       //                      i < dateToday ? (Math.random() * 4) + 3 : ( i == dateToday -1 ? totalToday : 0 )                                
-       //                   ]);
-       //               }
-
-
-       //          return arr;
-       //      })(),
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[new Date().getMonth()]+' '+point.name;
         },
@@ -204,27 +194,8 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                         data
                     ]) ;
             });
+            return arr;
         })(),
-
-        // (function () {
-        //         var arr = [],
-        //             maxPerMonth = 200,
-        //             minPerMonth = 100,
-        //             thisMonth = today.getMonth(),
-        //             totalThisMonth = 0;
-
-        //             seriesData[1].data.forEach(function (s) { 
-        //                 totalThisMonth += s[1];
-        //             });
-
-        //         for ( var i = 0; i < months.length ; i++ ) {
-        //              arr.push([
-        //                     months[i],
-        //                     i < thisMonth ? Math.random() * (maxPerMonth-minPerMonth+1)+minPerMonth : ( i == thisMonth ? totalThisMonth : 0 )
-        //                  ]);
-        //              }            
-        //         return arr;
-        //     })(),
         pointFormatter : function (point) {
             console.log(Date);
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name+' '+new Date().getFullYear();
@@ -232,15 +203,4 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
         chartTitle : 'Your Energy Consumption for this Year'
     });
 
-    console.log(seriesData[1]);
-
-})();
-
-
-/*
-    SETUP DATA FOR PREVIOUS 
-    encapsulated within IIFE to prevent global conflict and mess
-*/
-;(function () {
-    
 })();

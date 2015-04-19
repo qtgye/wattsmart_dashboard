@@ -118,14 +118,30 @@ $(function () {
 
             var chart = this;
 
+            // initialise datepickers
+            $('#dateSelected').datepicker();
+            $('#monthSelected').datepicker({
+                format : 'mm-yyyy',
+                viewMode:'months',
+                minViewMode : 'months'                
+            });
+            // $('#yearSelected').datepicker({
+            //     format : 'yyyy',
+            //     viewMode:2,
+            //     minViewMode : 2                
+            // });
+
+
             // button click handler for changing series
             seriesData.forEach(function(s, i){
                 $('.history-chart-buttons .btn').eq(i).click(function () {
+                    $('#selectPeriodBtn').removeClass('btn-dark');
                     updateChart(chart,s);
                 });
             });  
 
             // handle click for selectPeriod button
+
 
         });
     

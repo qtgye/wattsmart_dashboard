@@ -20,6 +20,8 @@
 
 	<link media="all" type="text/css" rel="stylesheet" href="http://wattsmart.ph/build/css/animate.css">
 
+	<!-- Bootstrap Datepicker CSS for modal -->
+	<script src="libs/datepicker/css/bootstrap-datepicker.css"></script>
 
 
 	<!-- Datepicker CSS -->
@@ -137,7 +139,7 @@
 								</span>
 							</label>
 							<label for="selectRange">								
-								<span class="btn btn-default btn-dark" data-toggle="modal" data-target="#selectPeriodModal">
+								<span id="selectPeriodBtn" class="btn btn-default" data-toggle="modal" data-target="#selectPeriodModal">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
 							</label>
@@ -288,8 +290,18 @@
 									Select Date
 								</div>
 								<div class="panel-collapse collapse in" id="selectPeriodDate">
-									<div class="panel-body">
-										Date Picker Here
+									<div class="panel-body historyPeriodSelect">
+										<div class="form-inline">
+											<div class="input-group">
+												<label class="input-group-addon" for="dateSelected">
+													<!-- <span class="btn btn-default"> -->
+														<span class="glyphicon glyphicon-calendar"></span>
+													<!-- </span>												 -->
+												</label>
+												<input type="text" id="dateSelected"></input>
+											</div>
+										</div>			
+										<span class="btn btn-primary">Go</span>				
 									</div>
 								</div>								
 							</div>
@@ -298,8 +310,18 @@
 									Select Month
 								</div>
 								<div class="panel-collapse collapse" id="selectPeriodMonth">
-									<div class="panel-body">
-										Month Picker Here
+									<div class="panel-body historyPeriodSelect">
+										<div class="form-inline">
+											<div class="input-group">
+												<label class="input-group-addon" for="monthSelected">
+													<!-- <span class="btn btn-default"> -->
+														<span class="glyphicon glyphicon-calendar"></span>
+													<!-- </span>												 -->
+												</label>
+												<input type="text" id="monthSelected"></input>
+											</div>
+										</div>			
+										<span class="btn btn-primary">Go</span>	
 									</div>
 								</div>								
 							</div>
@@ -308,8 +330,8 @@
 									Select Year
 								</div>
 								<div class="panel-collapse collapse" id="selectPeriodYear">
-									<div class="panel-body">
-										Date Picker Here
+									<div class="panel-body historyPeriodSelect">
+										<select name="" id="yearSelected" ></select>
 									</div>
 								</div>								
 							</div>
@@ -320,7 +342,6 @@
 					</div>
 					<!-- end modal body -->
 					<div class="modal-footer">
-						<div class="btn btn-primary"> Select </div>
 						<div class="btn btn-default" data-dismiss="modal">Cancel</div>
 					</div>
 					<!-- end modal footer -->
@@ -363,6 +384,9 @@
 		<script src="js/appliances.js"></script>
 		<script src="js/history.js"></script>		
 		<script src="js/realtime.js"></script>
+
+		<!-- date picker -->
+		<script src="libs/datepicker/js/bootstrap-datepicker.js"></script>
 
 		<!--userdata.js-->
 		<!-- <script src="http://wattsmart.ph/build/js/userdata.js"></script> -->

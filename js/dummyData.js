@@ -87,7 +87,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 pointFormatter : function (point) {
                     return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
                 },
-                chartTitle : 'Your Energy Consumption for the '+year
+                chartTitle : 'Your Energy Consumption for '+year
             } : null;
         };
         historyData.getByMonth = function (month,year) {        

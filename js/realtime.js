@@ -16,8 +16,6 @@ $(function() {
         }
       },1000);
 
-      console.log(data);
-
       return data;
 
     })();
@@ -70,8 +68,6 @@ $(function() {
                         };
                         
                         addPoint();
-                        
-                        console.log(xAxis);
 
                         setInterval(function () {                            
                             addPoint();

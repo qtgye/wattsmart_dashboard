@@ -120,9 +120,20 @@ $(function () {
         /* callback */
 
         var chart = this,
+            today = new Date(Date.now()),
+            totalToday = (function () {
+                            var total = 0;
+                            historyData.getByDate(today.getDate(),today.getMonth()+1,today.getFullYear()).data.forEach(function (d) {
+                                total += d[1];
+                            });
+                            return total.toFixed(2);
+                        })(),            
             selectPeriodBtn = $('#selectPeriodBtn'),
             yearSelect = $('#yearSelected'),
             errorModal = $('#periodError');
+
+            $('#totalConsumptionToday').text(totalToday);
+            $('#totalCostToday').text((totalToday*10.51).toFixed(2));
 
             // initialise tooltip
             $('[data-toggle="tooltip"]').tooltip();

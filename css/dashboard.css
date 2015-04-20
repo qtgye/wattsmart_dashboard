@@ -175,9 +175,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 			text-align: left;
 		}
 			.rank-item {
-				background-color: #fff;
-				-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-				box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+				background-color: #fff;				
 				padding: 10px 0;
 			}
 				.rank-item-rank {
@@ -214,7 +212,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 					.table#appliances td .panel-collapse div {
 						padding: 10px;
 					}
-		
+
 		.recommendations {
 			width: 90%;
 			margin: auto;
@@ -257,6 +255,36 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 	.appliance-ranking .dashboard-sidebar {
 		float: left;
 	}
+	.appliance-ranking .panel {
+		background: none;
+		border: none;
+	}
+		.rank-list > .row {
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			-ms-border-radius: 10px;
+			-o-border-radius: 10px;
+			border-radius: 10px;
+			background: #fff;
+			-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+			box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+		}
+			.rank-heading {
+				padding: 5px 10px;
+			}
+				.rank-top {
+					-webkit-border-radius: 999px;
+					-moz-border-radius: 999px;
+					-ms-border-radius: 999px;
+					-o-border-radius: 999px;
+					border-radius: 999px;
+					color: #fff;
+					line-height: 1.5em;
+					width: 1.5em;
+					text-align: center;
+					vertical-align: middle;
+					display: inline-block;
+				}
 		.chart {
 			width: 100%;			
 		}

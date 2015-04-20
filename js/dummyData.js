@@ -118,8 +118,6 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 })();
             }
 
-            console.log(data);
-
             return data.length > 0 ? {
                 year : year,
                 month : months[month],

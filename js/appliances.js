@@ -115,17 +115,19 @@ $(function () {
 		{
 			var subInfoId = 'itemSubInfo_'+i,
 				rowInner = $('<div>',{class:'col-sm-4'}).appendTo(rankRow)	,			
-				itemPanel = $('<div>',{class:'panel panel-default clearfix rank-item'}).appendTo(rowInner),
+				itemPanel = $('<div>',{class:'panel panel-primary clearfix rank-item'}).appendTo(rowInner)
+							.append($('<div class="hidden-xs rank-heading"><h3 class="text-primary"><h2 class="bg-primary rank-top">'+(i+1)+'</h2> '+item.name+'</h3></div>')),
 					itemRankContainer = $('<div>',{class:'visible-xs col-xs-4'}).appendTo(itemPanel),
 						itemRank = $('<div>',{class:'bg-primary rank-item-rank'})
 							.append('<h3>TOP</h3><h1>'+(i+1)+'</h1>')
 							.appendTo(itemRankContainer),
-					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12',style:'padding: 10px 5px 5px 20px'}).appendTo(itemPanel),
-						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg'),style:'max-width:100%'}).appendTo(itemImgContainer),
-					itemMainInfoContainer = $('<div>',{class:'col-xs-6 col-sm-12'}).appendTo(itemPanel),
+					itemMainInfoContainer = $('<div>',{class:'visible-xs'}).appendTo(itemPanel),
 						itemMainInfo = $('<div>',{class:'rank-item-info'}).appendTo(itemMainInfoContainer)
 							.append('<h3>'+item.name+'</h3>')
-							.append((item.location ? '- '+item.location : ''));
+							.append((item.location ? '- '+item.location : '')),
+					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12',style:'padding: 10px 10px 10px 20px'}).appendTo(itemPanel),
+						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg'),style:'max-width:100%'}).appendTo(itemImgContainer);
+					
 		}
 
 

@@ -285,55 +285,36 @@
 					<div class="modal-body">
 
 						<div class="panel-group" id="selectPeriodAccordion">
-							<label class="panel panel-default" for="dateRadio">
-								<input type="radio" class="hide" name="historySelect" id="dateRadio" checked>
+							<div class="panel panel-default">
 								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodDate">
 									Select Date
 								</div>
-								<div class="panel-collapse collapse in" id="selectPeriodDate">
+								<div class="panel-collapse collapse" id="selectPeriodDate">
 									<div class="panel-body historyPeriodSelect">
-										<div class="input-group">													
+										<div class="input-group col-xs-10">													
 											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
-											<div class="input-group-addon">
-												<button type="submit" class="btn btn-small btn-primary">Go</button>	
+											<div class="input-group-addon btn btn-dark" id="dateSelectBtn">
+												<span>View Data</span>
 											</div>
 										</div>																					
 									</div>
 								</div>								
-							</label>
-							<label class="panel panel-default" for="monthRadio">
-								<input type="radio" class="hide" name="historySelect" id="monthRadio">
+							</div>
+							<div class="panel panel-default">
 								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodMonth">
-									Select Date
+									Select Month
 								</div>
-								<div class="panel-collapse collapse" id="selectPeriodMonth">
+								<div class="panel-collapse collapse in" id="selectPeriodMonth">
 									<div class="panel-body historyPeriodSelect">
-										<div class="input-group">													
-											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
-											<div class="input-group-addon">
-												<button type="submit" class="btn btn-small btn-primary">Go</button>	
+										<div class="input-group col-xs-10">													
+											<input class="form-control" type="text" id="dateSelected" placeholder="mm/yyy"></input>
+											<div class="input-group-addon btn btn-dark" id="monthSelectBtn">
+												<span>View Data</span>
 											</div>
 										</div>																					
 									</div>
 								</div>								
-							</label>
-							<label class="panel panel-default" for="yearRadio">
-								<input type="radio" class="hide" name="historySelect" id="yearRadio">
-								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodYear">
-									Select Date
-								</div>
-								<div class="panel-collapse collapse" id="selectPeriodYear">
-									<div class="panel-body historyPeriodSelect">
-										<div class="input-group">													
-											<input class="form-control" type="text" id="dateSelected" placeholder="dd/mm/yyy"></input>
-											<div class="input-group-addon">
-												<button type="submit" class="btn btn-small btn-primary">Go</button>	
-											</div>
-										</div>																					
-									</div>
-								</div>								
-							</label>
-
+							</div>
 						</div>
 						<!-- end #selectPeriodAccordion -->
 

@@ -125,7 +125,7 @@ $(function() {
         var chart = this;
 
         // create buttons container for appliances
-        var btnContainer = $('<div>')
+        var btnContainer = $('<div class="panel">')
                             .insertAfter($('#realtime-chart'))
                             .append('<div><em>Add/remove appliances:</em></div>');
 

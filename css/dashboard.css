@@ -35,7 +35,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 		color: #fff !important;
 	}
 .btn-dark:hover, .btn-dark:hover * {
-	background-color: #555 !important;	
+	background-color: #000 !important;
 }
 .datepicker {
 	z-index: 99999;

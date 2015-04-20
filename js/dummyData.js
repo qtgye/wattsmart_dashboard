@@ -145,10 +145,14 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
 
             month--;
 
+            console.log(historyData[dataMatrix]);
+
             if ( !historyData.dataMatrix[year] || !historyData.dataMatrix[year][month] || !historyData.dataMatrix[year][month][day] )
             {
                 return null
             }
+
+
 
             for ( hour in historyData.dataMatrix[year][month][day] )
             {
@@ -186,6 +190,8 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
     var today = new Date(Date.now()),
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     seriesData = historyData.current;
+
+    // console.log(historyData.getByDate(today.getDate(),today.getMonth()+1,today.getFullYear()));
 
     // setup data for today
     seriesData.push({                

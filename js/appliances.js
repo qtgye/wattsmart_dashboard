@@ -14,6 +14,7 @@ var appliances = (function () {
 			{
 				name : 'Aircon',
 				location : 'Main',			
+				multiplier : 0.2,
 				consumption : Math.random()*300+200,
 				info : 'Some info here',
 				image : 'img/appliances/aircon.jpg'
@@ -21,6 +22,7 @@ var appliances = (function () {
 			{
 				name : 'Aircon',
 				location : 'Men\'s Room',			
+				multiplier : 0.2,
 				consumption : Math.random()*280+200,
 				info : 'Some info here',
 				image : 'img/appliances/aircon.jpg'
@@ -28,6 +30,7 @@ var appliances = (function () {
 			{
 				name : 'Aircon',
 				location : 'Ladie\'s Room',			
+				multiplier : 0.2,
 				consumption : Math.random()*270+200,
 				info : 'Some info here',
 				image : 'img/appliances/aircon.jpg'
@@ -35,6 +38,7 @@ var appliances = (function () {
 			{
 				name : 'Television',
 				location : 'Living Room',			
+				multiplier : 0.1,
 				consumption : Math.random()*100+80,
 				info : 'Some info here',
 				image : 'img/appliances/tv.jpg'
@@ -42,12 +46,14 @@ var appliances = (function () {
 			{
 				name : 'Refrigerator',
 				location : 'Main',			
+				multiplier : 0.3,
 				consumption : Math.random()*400+280,
 				info : 'Some info here',
 				image : 'img/appliances/ref.jpg'
 			},
 			{
-				name : 'Heater',			
+				name : 'Heater',		
+				multiplier : 0.02,	
 				consumption : Math.random()*50+20,
 				info : 'Some info here',
 				image : 'img/appliances/heater.jpg'
@@ -55,6 +61,7 @@ var appliances = (function () {
 			{
 				name : 'Water Heater',
 				location : 'Main',			
+				multiplier : 0.03,
 				consumption : Math.random()*50+20,
 				info : 'Some info here',
 				image : 'img/appliances/water-heater.jpg'
@@ -62,6 +69,7 @@ var appliances = (function () {
 			{
 				name : 'CO (Convenience Outlet)',
 				location : 'Main',			
+				multiplier : 0.12,
 				consumption : Math.random()*75+50,
 				info : 'Some info here',
 				image : 'img/appliances/outlet.jpg'

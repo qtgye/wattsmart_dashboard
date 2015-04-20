@@ -45,26 +45,27 @@ $(function() {
 
     var realtimeChart = new Highcharts.Chart({
             chart: {
-                type: 'spline',
+                type: 'line',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 renderTo : $('#realtime-chart')[0],
+                ignoreHiddenSeries : false,
                 events: {
                     load: function () {
 
                         // set up the updating of the chart each second
-                        var series = this.series,
+                        var chart = this,
+                            series = this.series,
                             xAxis = this.xAxis,
                             count = 1;
 
                         function addPoint(){
                             series.forEach(function (s,i) {
                               var x = (new Date()).getTime(), // current time
-                                y = s.data[s.data.length-1].y + (Math.random()*(8/24/60/6/appliances.items.length));
-
-                                s.addPoint([x,y],true,true);
-                              
+                                y = s.data[s.data.length-1].y + (Math.random()*((8/24/60/6)*appliances.items.length*appliances.items[i].multiplier));
+                                s.addPoint([x,y],true);
                             });
+                            chart.redraw();
                         };
                         
                         addPoint();

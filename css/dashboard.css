@@ -28,13 +28,13 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 .btn-small {
 	padding: 0 4px;
 }
-.btn-dark {
-	background-color: #333 !important;
+.btn-default.btn-dark {
+	background-color: #333;
 }
 	.btn-dark, .btn-dark * {		
-		color: #fff !important;
+		color: #fff;
 	}
-.btn-dark:hover, .btn-dark:hover * {
+.btn-default.btn-dark:hover, .btn-default.btn-dark:hover * {
 	background-color: #000 !important;
 }
 .datepicker {
@@ -202,18 +202,19 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 			.table#appliances tr:nth-child(even) > td {
 				border-top: none;
 			}
-		.table#appliances td {
-			padding: 0;
-		}
-			.table#appliances:nth-child(odd) td > div{
-				padding: 10px;
+			.table#appliances td {
+				padding: 0;
 			}
-			.table#appliances td .panel-collapse {
-				padding: 0 !important;
-			}
-				.table#appliances td .panel-collapse div {
+				.table#appliances:nth-child(odd) td > div{
 					padding: 10px;
 				}
+				.table#appliances td .panel-collapse {
+					padding: 0 !important;
+				}
+					.table#appliances td .panel-collapse div {
+						padding: 10px;
+					}
+		
 		.recommendations {
 			width: 90%;
 			margin: auto;

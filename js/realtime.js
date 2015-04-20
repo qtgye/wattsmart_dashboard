@@ -22,6 +22,13 @@ $(function() {
 
     })();
 
+    // disable UTC
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
     var dataSeries = (function () {
                     // generate an array of random data
                     var data = [],
@@ -76,6 +83,11 @@ $(function() {
             title : { text : '' },
             xAxis: {
                 type: 'datetime',
+                dateTimeLabelFormats: {
+                    second: '%I:%M:%S %p',
+                    minute: '%I:%M %p',
+                    hour: '%I:%M %p'
+                },
                 tickPixelInterval: 150                
             },
             yAxis: {
@@ -91,8 +103,8 @@ $(function() {
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        Highcharts.dateFormat('%I:%M:%S %p <br/>%b %d, %Y ', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y,10) + ' kWh';
                 }
             },
             legend: {

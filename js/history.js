@@ -124,6 +124,9 @@ $(function () {
             yearSelect = $('#yearSelected'),
             errorModal = $('#periodError');
 
+            // initialise tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
             // initialise datepickers
             $('#dateSelected').datepicker({
                 format : 'dd/mm/yyyy',

@@ -9,55 +9,62 @@ var appliances = (function () {
 	var obj = {}; // return object
 
 	obj.pricePerKwh = 10.51;
-	obj.maxConsumption = 300;
 
 	obj.items = [
 			{
 				name : 'Aircon',
 				location : 'Main',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*300+200,
+				info : 'Some info here',
+				image : 'img/appliances/aircon.jpg'
 			},
 			{
 				name : 'Aircon',
 				location : 'Men\'s Room',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*280+200,
+				info : 'Some info here',
+				image : 'img/appliances/aircon.jpg'
 			},
 			{
 				name : 'Aircon',
 				location : 'Ladie\'s Room',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*270+200,
+				info : 'Some info here',
+				image : 'img/appliances/aircon.jpg'
 			},
 			{
 				name : 'Television',
 				location : 'Living Room',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*100+80,
+				info : 'Some info here',
+				image : 'img/appliances/tv.jpg'
 			},
 			{
 				name : 'Refrigerator',
 				location : 'Main',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*400+280,
+				info : 'Some info here',
+				image : 'img/appliances/ref.jpg'
 			},
 			{
 				name : 'Heater',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*50+20,
+				info : 'Some info here',
+				image : 'img/appliances/heater.jpg'
 			},
 			{
 				name : 'Water Heater',
 				location : 'Main',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				consumption : Math.random()*50+20,
+				info : 'Some info here',
+				image : 'img/appliances/water-heater.jpg'
 			},
 			{
 				name : 'CO (Convenience Outlet)',
-				location : 'Kitchen',			
-				consumption : Math.random()*obj.maxConsumption,
-				info : 'Some info here'
+				location : 'Main',			
+				consumption : Math.random()*75+50,
+				info : 'Some info here',
+				image : 'img/appliances/outlet.jpg'
 			}
 		];
 
@@ -113,8 +120,8 @@ $(function () {
 						itemRank = $('<div>',{class:'bg-primary rank-item-rank'})
 							.append('<h3>TOP</h3><h1>'+(i+1)+'</h1>')
 							.appendTo(itemRankContainer),
-					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12'}).appendTo(itemPanel),
-						itemImg = $('<img>',{src:(item.img ? item.img : 'img/thumbnail-default.jpg'),style:'max-width:100%'}).appendTo(itemImgContainer),
+					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12',style:'padding: 10px 5px 5px 20px'}).appendTo(itemPanel),
+						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg'),style:'max-width:100%'}).appendTo(itemImgContainer),
 					itemMainInfoContainer = $('<div>',{class:'col-xs-6 col-sm-12'}).appendTo(itemPanel),
 						itemMainInfo = $('<div>',{class:'rank-item-info'}).appendTo(itemMainInfoContainer)
 							.append('<h3>'+item.name+'</h3>')

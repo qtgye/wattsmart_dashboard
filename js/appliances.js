@@ -100,8 +100,10 @@ $(function () {
 
 	// sort appliances according to consumption
 	itemsSorted = items.sort(function (a,b) {
-		return a.consumption < b.consumption
+		return b.consumption - a.consumption
 	});
+
+	// console.log(itemsSorted);
 
 	var tbl = $('#appliances').addClass('list-group'),
 		rankList = $('.rank-list').addClass('clearfix'),

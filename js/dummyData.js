@@ -8,7 +8,7 @@
 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],            
     historyData = (function () {
         var historyData = {
-                start : new Date(Date.parse('2013 Nov 12')),
+                start : new Date(Date.parse('12 Nov 2013')),
                 current : [], // set of dummy series ( year | month | year )
                 months : [],
                 years : [],
@@ -28,6 +28,8 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 };
             obj.consumption = obj.hour < 5 || obj.hour > 20 ? Math.random()*(5/24) : Math.random()*(8/24)+(5/24)
             
+
+
             if ( !historyData.dataMatrix[obj.year] )
             {
                 historyData.dataMatrix[obj.year] = {}
@@ -45,7 +47,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {dataIndex:historyData.data.length}
             }
             historyData.data.push(obj);
-        };        
+        };               
         // add methods
         historyData.getByYear = function (year) {        
             var data = (function () {
@@ -85,13 +87,14 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 year : year,
                 data : data,
                 pointFormatter : function (point) {
-                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
+                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name+' '+year;
                 },
                 chartTitle : 'Your Energy Consumption for '+year
             } : null;
         };
         historyData.getByMonth = function (month,year) {        
-            var lastDay = new Date(year,month,0).getDate(),
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], 
+                lastDay = new Date(year,month,0).getDate(),
                 data = (function () {
                     var arr = [];
                     for (var i = 0; i < lastDay; i++) {
@@ -144,8 +147,6 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             })();
 
             month--;
-
-            console.log(historyData[dataMatrix]);
 
             if ( !historyData.dataMatrix[year] || !historyData.dataMatrix[year][month] || !historyData.dataMatrix[year][month][day] )
             {

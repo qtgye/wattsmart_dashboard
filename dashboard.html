@@ -21,7 +21,7 @@
 	<link media="all" type="text/css" rel="stylesheet" href="http://wattsmart.ph/build/css/animate.css">
 
 	<!-- Bootstrap Datepicker CSS for modal -->
-	<link rel="stylesheet" href="libs/datepicker/css/datepicker.js">
+	<link rel="stylesheet" href="libs/datepicker/css/datepicker.css">
 	
 
 
@@ -283,7 +283,7 @@
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
 					<div class="modal-header">
-						<span class="glyphicon glyphicon-remove text-muted pull-right" data-dismiss="modal"></span>
+						<a href="#" class="glyphicon glyphicon-remove text-muted pull-right" data-dismiss="modal"></a>
 						<h3>Select History Period</h3>						
 					</div>
 					<!-- end modal heading -->
@@ -362,21 +362,24 @@
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
 					<div class="modal-header">						
-						<h3 class="text-danger"> <span class="glyphicon glyphicon-exclamation-sign text-danger"> </span>Error</h3>						
+						<h3 class="text-danger"> <span class="glyphicon glyphicon-exclamation-sign text-danger"></span>&nbsp;Error</h3>						
 					</div>
 					<!-- end modal heading -->
 					<div class="modal-body">
 
-						<div class="panel panel-default">							
+						<div class="panel">							
 							<div class="panel-body">
 								<p>There is no available data for the period you requested.</p>
 								<p>Please provide a valid period.</p>
-							</div>
-							<div class="btn btn-default pull-right" data-dismiss="modal">OK</div>
+							</div>													
 						</div>
 
 					</div>
-					<!-- end modal body -->					
+					<!-- end modal body -->
+					<div class="modal-footer">
+						<div class="btn btn-default center-block" data-dismiss="modal">OK</div>
+					</div>		
+					<!-- end modal footer -->
 				</div>
 			</div>
 		</div>
@@ -390,7 +393,7 @@
 		<script src="http://wattsmart.ph/assets/bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- Bootstrap Datepicker JS for modal -->
-		<script src="libs/datepicker/css/bootstrap-datepicker.js"></script>
+		<script src="libs/datepicker/js/bootstrap-datepicker.js"></script>
 
 		<!-- Main JS -->
 		<!-- <script src="http://wattsmart.ph/build/js/main.js"></script> -->

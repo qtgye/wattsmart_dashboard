@@ -126,7 +126,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 month : months[month],
                 data : data,
                 pointFormatter : function (point) {
-                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[new Date().getMonth()]+' '+point.name;
+                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[month]+' '+point.name;
                 },
                 chartTitle : 'Your Energy Consumption for '+months[month]+', '+year
             } : null;

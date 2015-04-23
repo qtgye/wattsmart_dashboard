@@ -9,9 +9,7 @@ $(function () {
         // update colors
         series.data.forEach(function (data, i) {
             var RG = Math.floor(255*(1-(data.y/series.dataMax))),
-                color = 'rgb('+RG+','+Math.floor(180+(75*(RG/255)))+','+RG+')';
-
-            console.log(color);
+                color = 'rgb('+RG+','+Math.floor(180+(75*(RG/255)))+','+RG+')';                
             data.update({
                 color : color
             })

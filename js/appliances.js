@@ -126,10 +126,10 @@ $(function () {
 			var subInfoId = 'itemSubInfo_'+i,
 				rowInner = $('<div>',{class:'col-sm-4'}).appendTo(rankRow)	,			
 				itemPanel = $('<div>',{class:'panel panel-primary no-shadow clearfix rank-item'}).appendTo(rowInner)
-							.append($('<div class="col-xs-4 rank-heading"><p class="text-primary">TOP</p><h2 class="bg-primary rank-top">'+(i+1)+'</h2></div>')),		
-					itemImgContainer = $('<div>',{class:'hidden-xs rank-item-imgContainer'}).appendTo(itemPanel),
+							.append($('<div class="col-xs-4 col-sm-12 rank-heading"><p class="text-primary">TOP</p><h2 class="bg-primary rank-top">'+(i+1)+'</h2></div>')),		
+					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12 rank-item-imgContainer'}).appendTo(itemPanel),
 						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg')}).appendTo(itemImgContainer),
-					itemMainInfoContainer = $('<div>',{class:'col-xs-8',style:'text-align:center'}).appendTo(itemPanel),
+					itemMainInfoContainer = $('<div>',{class:'col-xs-8 col-sm-12'}).appendTo(itemPanel),
 						itemMainInfo = $('<div>',{class:'rank-item-info'}).appendTo(itemMainInfoContainer)
 							.append('<h3>'+item.name+'</h3>')
 							.append('<em>'+item.location+'</em>')

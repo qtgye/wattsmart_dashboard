@@ -8,9 +8,12 @@ $(function () {
         var series = this.series[0];
         // update colors
         series.data.forEach(function (data, i) {
-            var RG = Math.floor(230*(1-(data.y/series.dataMax)));
+            var RG = Math.floor(255*(1-(data.y/series.dataMax))),
+                color = 'rgb('+RG+','+Math.floor(180+(75*(RG/255)))+','+RG+')';
+
+            console.log(color);
             data.update({
-                color : 'rgb('+RG+','+RG+',230)'
+                color : color
             })
         });
     }

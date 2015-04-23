@@ -125,18 +125,19 @@ $(function () {
 		{
 			var subInfoId = 'itemSubInfo_'+i,
 				rowInner = $('<div>',{class:'col-sm-4'}).appendTo(rankRow)	,			
-				itemPanel = $('<div>',{class:'panel panel-primary clearfix rank-item'}).appendTo(rowInner)
-							.append($('<div class="hidden-xs rank-heading"><h3 class="text-primary"><h2 class="bg-primary rank-top">'+(i+1)+'</h2> '+item.name+'</h3></div>')),
-					itemRankContainer = $('<div>',{class:'visible-xs col-xs-4'}).appendTo(itemPanel),
-						itemRank = $('<div>',{class:'bg-primary rank-item-rank'})
-							.append('<h3>TOP</h3><h1>'+(i+1)+'</h1>')
-							.appendTo(itemRankContainer),
-					itemMainInfoContainer = $('<div>',{class:'visible-xs'}).appendTo(itemPanel),
+				itemPanel = $('<div>',{class:'panel panel-primary no-shadow clearfix rank-item'}).appendTo(rowInner)
+							.append($('<div class="col-xs-4 rank-heading"><p class="text-primary">TOP</p><h2 class="bg-primary rank-top">'+(i+1)+'</h2></div>')),		
+					itemImgContainer = $('<div>',{class:'hidden-xs rank-item-imgContainer'}).appendTo(itemPanel),
+						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg')}).appendTo(itemImgContainer),
+					itemMainInfoContainer = $('<div>',{class:'col-xs-8',style:'text-align:center'}).appendTo(itemPanel),
 						itemMainInfo = $('<div>',{class:'rank-item-info'}).appendTo(itemMainInfoContainer)
 							.append('<h3>'+item.name+'</h3>')
-							.append((item.location ? '- '+item.location : '')),
-					itemImgContainer = $('<div>',{class:'hidden-xs col-sm-12',style:'padding: 10px 10px 10px 20px'}).appendTo(itemPanel),
-						itemImg = $('<img>',{src:(item.image ? item.image : 'img/thumbnail-default.jpg'),style:'max-width:100%'}).appendTo(itemImgContainer);
+							.append('<em>'+item.location+'</em>')
+							.append(
+								$('<blockquote>',{class:'panel panel-primary no-shadow rank-item-subinfo'})									
+									.append('<p><strong>Total Energy Used:</strong> <span class="inline-block">'+item.consumption.toFixed(2)+' kWh</span></p>')
+									.append('<p><strong>Total Cost:</strong> <span class="inline-block">Php '+item.cost+'</span></p>')
+								);
 					
 		}
 

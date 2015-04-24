@@ -46,6 +46,7 @@ $(function() {
     var realtimeChart = new Highcharts.Chart({
             chart: {
                 type: 'line',
+                zoomType: 'x',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 renderTo : $('#realtime-chart')[0],
@@ -91,6 +92,7 @@ $(function() {
                 title: {
                     text: 'Power in kW'
                 },
+                min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,

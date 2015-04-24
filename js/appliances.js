@@ -29,7 +29,7 @@ var appliances = (function () {
 			},
 			{
 				name : 'Aircon',
-				location : 'Ladie\'s Room',			
+				location : 'Ladies\' Room',			
 				multiplier : 0.2,
 				consumption : Math.random()*270+200,
 				info : 'Some info here',
@@ -114,7 +114,7 @@ $(function () {
 		// list all items to sidebar list
 		var row = $('<tr style="cursor:pointer" data-parent="#'+tbl.attr('id')+'" data-toggle="collapse" data-target="#listItem_'+i+'">');
 		row
-			.append('<td><div>'+item.name+'</div></td>')
+			.append('<td><div><strong>'+item.name+'</strong><small class="inline-block"><em>'+(item.location?'&nbsp;- '+item.location:'')+'</em></small></div></td>')
 			.append('<td><div>'+item.cost+'</div></td>')
 		tbl
 			.append(row)

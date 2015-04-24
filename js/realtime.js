@@ -89,7 +89,7 @@ $(function() {
             },
             yAxis: {
                 title: {
-                    text: 'Energy in kWh'
+                    text: 'Power in kW'
                 },
                 plotLines: [{
                     value: 0,
@@ -101,7 +101,7 @@ $(function() {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
                         Highcharts.dateFormat('%I:%M:%S %p <br/>%b %d, %Y ', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y,10) + ' kWh';
+                        Highcharts.numberFormat(this.y,10) + ' kW';
                 }
             },
             legend: {

@@ -90,7 +90,7 @@ $(function() {
             },
             yAxis: {
                 title: {
-                    text: 'Power in kW'
+                    text: 'Power (kW)'
                 },
                 min: 0,
                 plotLines: [{
@@ -129,13 +129,13 @@ $(function() {
         // create buttons container for appliances
         var btnContainer = $('<div class="panel">')
                             .insertAfter($('#realtime-chart'))
-                            .append('<div><em>Add/remove appliances:</em></div>');
+                            .append('<div><em>Click to add or remove appliances</em></div>');
 
         chart.series.forEach(function (s,i) {           
           // checkbox change handler
           var sId = 'series_'+i,
               checkbox = $('<input class="hide" type="checkbox" checked id="'+ sId +'">'),
-              button = $('<div>',{class:"btn realtime-btn"}).text(s.name).css('background-color',(checkbox.is(':checked') ? s.color : '#fff')),
+              button = $('<div>',{class:"btn realtime-btn"}).html(s.name+(appliances.items[i].location?'<span class="inline-block">&nbsp;- '+appliances.items[i].location+'</span>':'')).css('background-color',(checkbox.is(':checked') ? s.color : '#fff')),
               label = $('<label>',{for:sId})
                         .append(checkbox)
                         .append(button)

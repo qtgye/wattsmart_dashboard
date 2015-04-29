@@ -4,12 +4,23 @@ $(function () {
 
     // function to set colors of each data marker in a series
     // this should be called by .apply() with Chart as the parameter
-    function updateColors() {        
+    function updateColors(average) {        
         var series = this.series[0];
         // update colors
         series.data.forEach(function (data, i) {
             var RG = Math.floor(255*(1-(data.y/series.dataMax))),
-                color = 'rgb('+RG+','+Math.floor(180+(75*(RG/255)))+','+RG+')';                
+                color;     
+
+            // if value is > average, red; else, green
+            if ( data.y >= average )
+            {
+                color = 'rgb('+Math.floor(255+(75*(RG/255)))+','+RG+','+RG+')'; 
+            }
+            else
+            {
+                color = 'rgb('+RG+','+Math.floor(180+(75*(RG/255)))+','+RG+')';
+            }  
+
             data.update({
                 color : color
             })
@@ -25,6 +36,8 @@ $(function () {
 
         chart.showLoading();
 
+        console.log(s);
+
         // update tooltip format
         chart.series[0].update({
             tooltip : {
@@ -34,6 +47,21 @@ $(function () {
             }
         });
 
+        // update plotLine 
+        // chart.yAxis[0].update({
+        //     plotLines : [
+        //         {
+        //             label : {
+        //                 value : s.average,
+        //                 text : '<strong><p>Average : '+s.average+' kWh</p></strong>'
+        //             }
+        //         }
+        //     ]
+        // })
+        // chart.yAxis[0].plotLinesAndBands[0].options.label.text = '<strong><p>Average : '+s.average+' kWh</p></strong>';
+        chart.yAxis[0].plotLinesAndBands[0].options.value = s.average;        
+        console.log(chart.yAxis[0].plotLinesAndBands[0].options.label.text);
+
         // set timeout to allow loading text to fade in
         setTimeout(function () {
             var series = chart.series[0];            
@@ -42,7 +70,7 @@ $(function () {
             series.setData(s.data,true);
 
             // update colors 
-            updateColors.apply(chart);
+            updateColors.apply(chart,[s.average]);
 
             // change chart title
             chart.setTitle({
@@ -60,7 +88,7 @@ $(function () {
     // initiate chart
     var historyChart = new Highcharts.Chart({
         chart: {
-            type: 'column',
+            type : 'column',
             events : {
                 load : updateColors
             },
@@ -82,16 +110,30 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: 'Energy in kWh'
-            }
+                text: 'Energy (kWh)'
+            },
+            plotLines: [{
+                dashStyle : 'Dash',
+                color: 'gray',
+                width: '1',
+                zIndex: 99, // To not get stuck below the regular plot lines
+                label : {
+                    align : 'left',
+                    useHTML : true
+                },
+                events : {
+                    // display average value
+                    mouseover : function () {
+                        var plotLine = this;
+                        // some mouseover methods
+                    }
+                }
+            }]
         },
         legend: {
             enabled: false
         },
         tooltip: {
-            pointFormatter : function(){
-                return seriesData[1].pointFormatter(this);
-            },
             animation: true,
             shadow: true,
             headerFormat : '',
@@ -113,7 +155,6 @@ $(function () {
         },
         series: [{
             name: 'Energy Consumption History',
-            data: seriesData[1].data,
             colorByPoint: true         
         }]
     },function(){
@@ -159,13 +200,30 @@ $(function () {
 
 
             // button click handler for changing series
-            seriesData.forEach(function(s, i){
-                $('.history-chart-buttons .btn').eq(i).click(function () {
-                    selectPeriodBtn.removeClass('btn-dark');
-                    updateChart(chart,s);
-                });
-            });  
+            $('.history-chart-buttons .btn').each(function (i) {
+                var params = [
+                        {
+                            args :[today.getDate(),today.getMonth(),today.getFullYear()],
+                            method : 'getByDate'
+                        },
+                        {                       
+                            args : [today.getMonth(),today.getFullYear()],
+                            method : 'getByMonth'
+                        },
+                        {
+                            args : [today.getFullYear()],
+                            method : 'getByYear'
+                        }
+                    ];
 
+                $(this).click(function () {
+                    selectPeriodBtn.removeClass('btn-dark');
+                    console.log(i);
+                    updateChart(chart,historyData[params[i].method].apply(window,params[i].args));
+                })
+            });
+            // initialize default chart series on load ("This Month")
+            $('.history-chart-buttons .btn').eq(1).trigger('click');
 
             // handle modal interface
             var modal = $('#selectPeriodModal'),
@@ -228,7 +286,6 @@ $(function () {
                         seriesData = historyData.getByYear.apply(window,valsArr);
                         break;
                 }
-
 
                 if (seriesData)
                 {

@@ -12,67 +12,67 @@ var appliances = (function () {
 
 	obj.items = [
 			{
-				name : 'Aircon',
-				location : 'Main',			
+				name : "Aircon",
+				location : "Main",			
 				multiplier : 0.2,
 				consumption : Math.random()*300+200,
-				info : 'Some info here',
-				image : 'img/appliances/aircon.jpg'
+				info : "Some info here",
+				image : "img/appliances/aircon.jpg"
 			},
 			{
-				name : 'Aircon',
-				location : 'Men\'s Room',			
+				name : "Aircon",
+				location : "Men\'s Room",			
 				multiplier : 0.2,
 				consumption : Math.random()*280+200,
-				info : 'Some info here',
-				image : 'img/appliances/aircon.jpg'
+				info : "Some info here",
+				image : "img/appliances/aircon.jpg"
 			},
 			{
-				name : 'Aircon',
-				location : 'Ladies\' Room',			
+				name : "Aircon",
+				location : "Ladies\' Room",			
 				multiplier : 0.2,
 				consumption : Math.random()*270+200,
-				info : 'Some info here',
-				image : 'img/appliances/aircon.jpg'
+				info : "Some info here",
+				image : "img/appliances/aircon.jpg"
 			},
 			{
-				name : 'Television',
-				location : 'Living Room',			
+				name : "Television",
+				location : "Living Room",			
 				multiplier : 0.1,
 				consumption : Math.random()*100+80,
-				info : 'Some info here',
-				image : 'img/appliances/tv.jpg'
+				info : "Some info here",
+				image : "img/appliances/tv.jpg"
 			},
 			{
-				name : 'Refrigerator',
-				location : 'Main',			
+				name : "Refrigerator",
+				location : "Main",			
 				multiplier : 0.3,
 				consumption : Math.random()*400+280,
-				info : 'Some info here',
-				image : 'img/appliances/ref.jpg'
+				info : "Some info here",
+				image : "img/appliances/ref.jpg"
 			},
 			{
-				name : 'Heater',		
+				name : "Heater",		
 				multiplier : 0.02,	
 				consumption : Math.random()*50+20,
-				info : 'Some info here',
-				image : 'img/appliances/heater.jpg'
+				info : "Some info here",
+				image : "img/appliances/heater.jpg"
 			},
 			{
-				name : 'Water Heater',
-				location : 'Main',			
+				name : "Water Heater",
+				location : "Main",			
 				multiplier : 0.03,
 				consumption : Math.random()*50+20,
-				info : 'Some info here',
-				image : 'img/appliances/water-heater.jpg'
+				info : "Some info here",
+				image : "img/appliances/water-heater.jpg"
 			},
 			{
-				name : 'CO (Convenience Outlet)',
-				location : 'Main',			
+				name : "CO (Convenience Outlet)",
+				location : "Main",			
 				multiplier : 0.12,
 				consumption : Math.random()*75+50,
-				info : 'Some info here',
-				image : 'img/appliances/outlet.jpg'
+				info : "Some info here",
+				image : "img/appliances/outlet.jpg"
 			}
 		];
 
@@ -118,7 +118,7 @@ $(function () {
 			.append('<td><div>'+item.cost+'</div></td>')
 		tbl
 			.append(row)
-			.append('<tr><td colspan="2" ><div class="collapse panel-collapse" id="listItem_'+i+'"><div>'+item.info+'</div></div></td></tr>');
+			.append('<tr><td colspan="2" ><div class="collapse panel-collapse" id="listItem_'+i+'"><div>Total Energy Used: <span class="inline-block">'+item.consumption.toFixed(2)+' kWh</span></div></div></td></tr>');
 		
 		// list the top 3
 		if ( i < 3 )

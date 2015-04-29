@@ -86,6 +86,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             return data.length > 0 ? {
                 year : year,
                 data : data,
+                average : 150,
                 pointFormatter : function (point) {
                     return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name+' '+year;
                 },
@@ -125,8 +126,9 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 year : year,
                 month : months[month],
                 data : data,
+                average : 5,
                 pointFormatter : function (point) {
-                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[month]+' '+point.name;
+                    return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[month]+' '+point.category;
                 },
                 chartTitle : 'Your Energy Consumption for '+months[month]+', '+year
             } : null;
@@ -153,8 +155,6 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 return null
             }
 
-
-
             for ( hour in historyData.dataMatrix[year][month][day] )
             {
                 // process hour
@@ -165,6 +165,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 month : months[month],
                 day : day,
                 data : data,
+                average : 0.25,
                 pointFormatter : function (point) {
                     return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
                 },
@@ -190,9 +191,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
 ;(function () {
     var today = new Date(Date.now()),
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-    seriesData = historyData.current;
-
-    // console.log(historyData.getByDate(today.getDate(),today.getMonth()+1,today.getFullYear()));
+    seriesData = historyData.current;    
 
     // setup data for today
     seriesData.push({                
@@ -205,6 +204,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                     data[1]
                 ]
         }),
+        average : 0.3,
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name;
         },
@@ -224,6 +224,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             });
             return arr;
        })(),
+       average : 5,
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+months[new Date().getMonth()]+' '+point.name;
         },
@@ -243,6 +244,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             });
             return arr;
         })(),
+        average : 125,
         pointFormatter : function (point) {
             return '<b><h3>'+point.y.toFixed(2)+' kWh</h3></b> <br>consumed on <br>'+point.name+' '+new Date().getFullYear();
         },

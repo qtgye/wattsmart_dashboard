@@ -24,11 +24,12 @@ body {
 	font-size: 16px;
 }
 
-h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
+.dashboard h1,.dashboard h2,.dashboard h3,.dashboard h4,.dashboard h5,.dashboard h6,
+.dashboard p {
 	margin: 0;
 }
 
-.btn-default:hover {
+.dashboard .btn-default:hover {
 	background-image: none;
 }
 .btn.caret {
@@ -37,16 +38,16 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 .btn-small {
 	padding: 0 4px;
 }
-.btn-default.btn-dark {
+.dashboard .btn-default.btn-dark {
 	background-color: #333;
 }
 	.btn-dark, .btn-dark * {		
 		color: #fff;
 	}
-.btn-default.btn-dark:hover, .btn-default.btn-dark:hover * {
+.dashboard .btn-default.btn-dark:hover, .btn-default.btn-dark:hover * {
 	background-color: #000 !important;
 }
-.datepicker {
+.dashboard .datepicker {
 	z-index: 99999;
 }
 
@@ -74,7 +75,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 		position: relative;
 	}
 	
-	.row {
+	.dashboard .row {
 		padding: 0;
 	}
 
@@ -137,7 +138,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 			}
 
 
-	.content {
+	.dashboard .content {
 		padding: 50px 0;		
 		text-align: center;
 	}
@@ -275,7 +276,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 
 @media screen and ( min-width:768px ) {
 
-	.row {
+	.dashboard .row {
 		
 	}
 
@@ -292,7 +293,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6, p {
 		text-align: right;
 	}
 	
-	.content {
+	.dashboard .content {
 		padding: 40px 10px 50px 10px;
 	}
 	.appliance-ranking .content {

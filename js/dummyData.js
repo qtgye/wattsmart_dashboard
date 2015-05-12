@@ -17,37 +17,52 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
             };
         // populate historyData.data
         for (var i = Date.parse(historyData.start); i <= Date.now(); i += 3600000) {
-            var timestamp = new Date(i),
-                obj = {
+            var timestamp = new Date(i);            
+            
+            for (var i = 0; i < appliances.items.length; i++) {
+                var obj = {
                     unix : i,
                     timestamp : timestamp,
                     year : timestamp.getFullYear(),
                     month : timestamp.getMonth(),
                     day : timestamp.getDate(),
-                    hour : timestamp.getHours()                
+                    hour : timestamp.getHours(),
+                    appliance : appliances.items[i]               
                 };
-            obj.consumption = obj.hour < 5 || obj.hour > 20 ? Math.random()*(5/24) : Math.random()*(8/24)+(5/24)
+
+                obj.consumption = obj.hour < 5 || obj.hour > 20 ? (Math.random()*(5/24))*obj.appliance.multiplier : (Math.random()*(8/24)+(5/24))*obj.appliance.multiplier;
+
+                if ( !historyData.dataMatrix[obj.year] )
+                {
+                    historyData.dataMatrix[obj.year] = {}
+                }
+                if ( !historyData.dataMatrix[obj.year][obj.month] )
+                {
+                    historyData.dataMatrix[obj.year][obj.month] = {}
+                }
+                if ( !historyData.dataMatrix[obj.year][obj.month][obj.day] )
+                {
+                    historyData.dataMatrix[obj.year][obj.month][obj.day] = {}
+                }
+                if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] )
+                {
+                    historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {}
+                }
+                 if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] )
+                {
+                    historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] = {dataIndex:historyData.data.length}
+                }
+                historyData.data.push(obj);
+
+
+            };
+
             
+        };   
+
+        console.log(historyData);
 
 
-            if ( !historyData.dataMatrix[obj.year] )
-            {
-                historyData.dataMatrix[obj.year] = {}
-            }
-            if ( !historyData.dataMatrix[obj.year][obj.month] )
-            {
-                historyData.dataMatrix[obj.year][obj.month] = {}
-            }
-            if ( !historyData.dataMatrix[obj.year][obj.month][obj.day] )
-            {
-                historyData.dataMatrix[obj.year][obj.month][obj.day] = {}
-            }
-            if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] )
-            {
-                historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {dataIndex:historyData.data.length}
-            }
-            historyData.data.push(obj);
-        };               
         // add methods
         historyData.getByYear = function (year) {        
             var data = (function () {

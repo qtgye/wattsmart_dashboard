@@ -17,7 +17,8 @@ var appliances = (function () {
 				multiplier : 0.2,
 				consumption : Math.random()*300+200,
 				info : "Some info here",
-				image : "img/appliances/aircon.jpg"
+				image : "img/appliances/aircon.jpg",
+				id : 1
 			},
 			{
 				name : "Aircon",
@@ -25,7 +26,8 @@ var appliances = (function () {
 				multiplier : 0.2,
 				consumption : Math.random()*280+200,
 				info : "Some info here",
-				image : "img/appliances/aircon.jpg"
+				image : "img/appliances/aircon.jpg",
+				id : 2
 			},
 			{
 				name : "Aircon",
@@ -33,7 +35,8 @@ var appliances = (function () {
 				multiplier : 0.2,
 				consumption : Math.random()*270+200,
 				info : "Some info here",
-				image : "img/appliances/aircon.jpg"
+				image : "img/appliances/aircon.jpg",
+				id : 3
 			},
 			{
 				name : "Television",
@@ -41,7 +44,8 @@ var appliances = (function () {
 				multiplier : 0.1,
 				consumption : Math.random()*100+80,
 				info : "Some info here",
-				image : "img/appliances/tv.jpg"
+				image : "img/appliances/tv.jpg",
+				id : 4
 			},
 			{
 				name : "Refrigerator",
@@ -49,14 +53,16 @@ var appliances = (function () {
 				multiplier : 0.3,
 				consumption : Math.random()*400+280,
 				info : "Some info here",
-				image : "img/appliances/ref.jpg"
+				image : "img/appliances/ref.jpg",
+				id : 5
 			},
 			{
 				name : "Heater",		
 				multiplier : 0.02,	
 				consumption : Math.random()*50+20,
 				info : "Some info here",
-				image : "img/appliances/heater.jpg"
+				image : "img/appliances/heater.jpg",
+				id : 6
 			},
 			{
 				name : "Water Heater",
@@ -64,7 +70,8 @@ var appliances = (function () {
 				multiplier : 0.03,
 				consumption : Math.random()*50+20,
 				info : "Some info here",
-				image : "img/appliances/water-heater.jpg"
+				image : "img/appliances/water-heater.jpg",
+				id : 7
 			},
 			{
 				name : "CO (Convenience Outlet)",
@@ -72,12 +79,14 @@ var appliances = (function () {
 				multiplier : 0.12,
 				consumption : Math.random()*75+50,
 				info : "Some info here",
-				image : "img/appliances/outlet.jpg"
+				image : "img/appliances/outlet.jpg",
+				id : 8
 			}
 		];
 
 	return obj;
 })();
+
 
 
 $(function () {

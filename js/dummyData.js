@@ -15,45 +15,51 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                 dataMatrix : {},
                 data : []
             };
+
+
+
+
         // populate historyData.data
         for (var i = Date.parse(historyData.start); i <= Date.now(); i += 3600000) {
             var timestamp = new Date(i);            
             
             for (var i = 0; i < appliances.items.length; i++) {
                 var obj = {
-                    unix : i,
-                    timestamp : timestamp,
-                    year : timestamp.getFullYear(),
-                    month : timestamp.getMonth(),
-                    day : timestamp.getDate(),
-                    hour : timestamp.getHours(),
-                    appliance : appliances.items[i]               
-                };
+                        unix : i,
+                        timestamp : timestamp,
+                        year : timestamp.getFullYear(),
+                        month : timestamp.getMonth(),
+                        day : timestamp.getDate(),
+                        hour : timestamp.getHours(),
+                        appliance_name : appliances.items[i].name,
+                        appliance_id : appliances.items[i].id
+                    };
 
-                obj.consumption = obj.hour < 5 || obj.hour > 20 ? (Math.random()*(5/24))*obj.appliance.multiplier : (Math.random()*(8/24)+(5/24))*obj.appliance.multiplier;
+                // historyData.data.push(obj);                
 
-                if ( !historyData.dataMatrix[obj.year] )
-                {
-                    historyData.dataMatrix[obj.year] = {}
-                }
-                if ( !historyData.dataMatrix[obj.year][obj.month] )
-                {
-                    historyData.dataMatrix[obj.year][obj.month] = {}
-                }
-                if ( !historyData.dataMatrix[obj.year][obj.month][obj.day] )
-                {
-                    historyData.dataMatrix[obj.year][obj.month][obj.day] = {}
-                }
-                if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] )
-                {
-                    historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {}
-                }
-                 if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] )
-                {
-                    historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] = {dataIndex:historyData.data.length}
-                }
-                historyData.data.push(obj);
+                // obj.consumption = obj.hour < 5 || obj.hour > 20 ? (Math.random()*(5/24))*obj.appliance.multiplier : (Math.random()*(8/24)+(5/24))*obj.appliance.multiplier;
 
+                // if ( !historyData.dataMatrix[obj.year] )
+                // {
+                //     historyData.dataMatrix[obj.year] = {}
+                // }
+                // if ( !historyData.dataMatrix[obj.year][obj.month] )
+                // {
+                //     historyData.dataMatrix[obj.year][obj.month] = {}
+                // }
+                // if ( !historyData.dataMatrix[obj.year][obj.month][obj.day] )
+                // {
+                //     historyData.dataMatrix[obj.year][obj.month][obj.day] = {}
+                // }
+                // if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] )
+                // {
+                //     historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour] = {}
+                // }
+                //  if ( !historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] )
+                // {
+                //     historyData.dataMatrix[obj.year][obj.month][obj.day][obj.hour][obj.appliance.name] = {dataIndex:historyData.data.length}
+                // }
+                // historyData.data.push(obj);
 
             };
 

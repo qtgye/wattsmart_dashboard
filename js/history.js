@@ -36,8 +36,6 @@ $(function () {
 
         chart.showLoading();
 
-        console.log(s);
-
         // update tooltip format
         chart.series[0].update({
             tooltip : {
@@ -59,9 +57,7 @@ $(function () {
         //     ]
         // })
         // chart.yAxis[0].plotLinesAndBands[0].options.label.text = '<strong><p>Average : '+s.average+' kWh</p></strong>';
-        chart.yAxis[0].plotLinesAndBands[0].options.value = s.average;        
-        console.log(chart.yAxis[0].plotLinesAndBands[0].options.label.text);
-
+        chart.yAxis[0].plotLinesAndBands[0].options.value = s.average;     
         // set timeout to allow loading text to fade in
         setTimeout(function () {
             var series = chart.series[0];            
@@ -218,8 +214,12 @@ $(function () {
 
                 $(this).click(function () {
                     selectPeriodBtn.removeClass('btn-dark');
-                    console.log(i);
-                    updateChart(chart,historyData[params[i].method].apply(window,params[i].args));
+                    
+                    // last button (advanced select has a different function)
+                    if ( i < params.length )
+                    {
+                        updateChart(chart,historyData[params[i].method].apply(window,params[i].args));
+                    }                    
                 })
             });
             // initialize default chart series on load ("This Month")

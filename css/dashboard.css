@@ -7,8 +7,8 @@
 */
 @font-face {
 	font-family: 'Open Sans';
-	src : url('fonts/Open-Sans.ttf');
-	src : url('fonts/Open-Sans.woff');
+	src : url('../fonts/Open-Sans.ttf');
+	src : url('../fonts/Open-Sans.woff');
 }
 
 /*
@@ -47,8 +47,17 @@ body {
 .dashboard .btn-default.btn-dark:hover, .btn-default.btn-dark:hover * {
 	background-color: #000 !important;
 }
-.dashboard .datepicker {
-	z-index: 99999;
+.datepicker {
+	z-index: 9999;
+}
+#selectPeriodModal .input-group {
+	margin: auto;
+}
+#selectPeriodModal h3 {	
+	display: block;
+	margin: auto;
+	padding: 10px 0;
+	cursor: pointer;
 }
 
 /*

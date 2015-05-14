@@ -111,6 +111,9 @@ $(function () {
 
 	itemsSorted.forEach(function (item,i) {
 
+		// list all appliances to the Advanced Select modal
+		$('#applianceSelected').append('<option value="'+item.name+'">'+item.name+'</option>');
+
 		// list all items to sidebar list
 		var row = $('<tr style="cursor:pointer" data-parent="#'+tbl.attr('id')+'" data-toggle="collapse" data-target="#listItem_'+i+'">');
 		row

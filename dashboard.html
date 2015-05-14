@@ -140,7 +140,7 @@
 								</span>
 							</label>
 							<label for="selectRange" data-toggle="modal" data-target="#selectPeriodModal">								
-								<span id="selectPeriodBtn" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Advance Select">
+								<span id="selectPeriodBtn" class="btn btn-default">
 									<span>
 										<span class="glyphicon glyphicon-calendar text-primary"></span>
 										<em class="text-primary">Advance Select</em>
@@ -284,71 +284,103 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<a href="#" class="glyphicon glyphicon-remove text-muted pull-right" data-dismiss="modal"></a>
-						<h3>Select History Period</h3>						
+						<h3>Advance Select</h3>						
 					</div>
 					<!-- end modal heading -->
 					<div class="modal-body">
 
-						<div class="panel-group" id="selectPeriodAccordion">
-							<div class="panel panel-default">
-								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodDate">
-									Select Date
-								</div>
-								<div class="panel-collapse collapse" id="selectPeriodDate">
-									<div class="panel-body historyPeriodSelect" data-period="date" >
-										<div class="form-group">
-											<div class="input-group col-xs-10">													
-												<input id="dateSelected" class="form-control input" type="text" placeholder="dd/mm/yyyy"></input>
-												<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="dateSelectBtn">
-													<span>View Data</span>
-												</div>
-											</div>	
-										</div>
-										<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">dd/mm/yyyy</strong> </em></small></p>																				
+						<div class="panel-group" id="selectTypeAccordion">
+
+							<div class="panel">
+								<h3 class="text-primary" data-toggle="collapse" data-parent="#selectTypeAccordion" data-target="#selectApplianceAccordion">Select Appliance</h3>
+
+								<div class="collapse in" id="selectApplianceAccordion">
+									
+									<div class="form-group">
+										<div class="input-group col-xs-10">	
+											<select name="applianceSelected" id="applianceSelected" class="form-control input">
+												<!-- populate with appliances list -->
+											</select>												
+											<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="dateSelectBtn">
+												<span>View Data</span>
+											</div>
+										</div>	
 									</div>
-								</div>								
-							</div>
-							<!-- end date select -->
-							<div class="panel panel-default">
-								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodMonth">
-									Select Month
 								</div>
-								<div class="panel-collapse collapse in" id="selectPeriodMonth">
-									<div class="panel-body historyPeriodSelect" data-period="month" >
-										<div class="form-group">
-											<div class="input-group col-xs-10">													
-												<input id="monthSelected" class="form-control input" type="text" placeholder="mm/yyyy"></input>
-												<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="monthSelectBtn">
-													<span>View Data</span>
+							</div>				
+							<!-- end select appliance panel -->
+
+							<div class="panel">
+								<h3 class="text-primary" data-toggle="collapse" data-parent="#selectTypeAccordion" data-target="#selectPeriodAccordionContainer">Select History Period</h3>
+							
+								<div id="selectPeriodAccordionContainer" class="collapse">
+									<div class="panel-group collapse in" id="selectPeriodAccordion">
+										<div class="panel panel-default">
+											<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodDate">
+												Select Date
+											</div>
+											<div class="panel-collapse collapse" id="selectPeriodDate">
+												<div class="panel-body historyPeriodSelect" data-period="date" >
+													<div class="form-group">
+														<div class="input-group col-xs-10">													
+															<input id="dateSelected" class="form-control input" type="text" placeholder="dd/mm/yyyy"></input>
+															<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="dateSelectBtn">
+																<span>View Data</span>
+															</div>
+														</div>	
+													</div>
+													<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">dd/mm/yyyy</strong> </em></small></p>																				
 												</div>
-											</div>	
+											</div>								
 										</div>
-										<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">mm/yyyy</strong> </em></small></p>																														
+										<!-- end date select -->
+										<div class="panel panel-default">
+											<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodMonth">
+												Select Month
+											</div>
+											<div class="panel-collapse collapse in" id="selectPeriodMonth">
+												<div class="panel-body historyPeriodSelect" data-period="month" >
+													<div class="form-group">
+														<div class="input-group col-xs-10">													
+															<input id="monthSelected" class="form-control input" type="text" placeholder="mm/yyyy"></input>
+															<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="monthSelectBtn">
+																<span>View Data</span>
+															</div>
+														</div>	
+													</div>
+													<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">mm/yyyy</strong> </em></small></p>																														
+												</div>
+											</div>								
+										</div>
+										<!-- end month select -->
+										<div class="panel panel-default">
+											<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodYear">
+												Select Year
+											</div>
+											<div class="panel-collapse collapse" id="selectPeriodYear">
+												<div class="panel-body historyPeriodSelect" data-period="year" >
+													<div class="form-group">
+														<div class="input-group col-xs-10">					
+															<select id="yearSelected" class="form-control input" width="5em"></select>
+															<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="yearSelectBtn">
+																<span>View Data</span>
+															</div>
+														</div>		
+													</div>
+													<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">yyyy</strong> </em></small></p>																		
+												</div>
+											</div>								
+										</div>
+										<!-- end year select -->
 									</div>
-								</div>								
-							</div>
-							<!-- end month select -->
-							<div class="panel panel-default">
-								<div class="panel-heading" data-parent="#selectPeriodAccordion" data-toggle="collapse" data-target="#selectPeriodYear">
-									Select Year
+									<!-- end #selectPeriodAccordion -->
 								</div>
-								<div class="panel-collapse collapse" id="selectPeriodYear">
-									<div class="panel-body historyPeriodSelect" data-period="year" >
-										<div class="form-group">
-											<div class="input-group col-xs-10">					
-												<select id="yearSelected" class="form-control input" width="5em"></select>
-												<div class="input-group-addon btn btn-default btn-dark periodSelectBtn" id="yearSelectBtn">
-													<span>View Data</span>
-												</div>
-											</div>		
-										</div>
-										<p class="error-message collapse"><small><em class="text-danger">Please provide a valid input in format: <strong class="text-danger">yyyy</strong> </em></small></p>																		
-									</div>
-								</div>								
+								<!-- end #selectPeriodAccordionContainer -->								
 							</div>
-							<!-- end year select -->
+							<!-- end select history period panel -->							
+
 						</div>
-						<!-- end #selectPeriodAccordion -->
+						<!-- end #selectTypeAccordion -->						
 
 					</div>
 					<!-- end modal body -->					
